@@ -1,0 +1,53 @@
+
+<div class="container-body">
+
+  <div class="container-login">
+    <form class="form" [formGroup]="myForm" (ngSubmit)="onSubmit()">
+      
+      <div class="div-image">
+        <img src="assets/iconQuiz.svg" alt="" style="width: 140px;height: 140px;">
+      </div>
+      <div class="div-name">
+        {{newAccount}}
+      </div>
+      <div class="div-country">
+        <mat-form-field appearance="outline">
+          <mat-label>Choississez un pays</mat-label>
+          <select matNativeControl formControlName="country" name="car" style="color:#454546;">
+            <option value="" selected></option>
+            <option *ngFor="let country of countries" [value]="country.value">
+              {{country.viewValue}}
+            </option>
+          </select>
+        </mat-form-field>
+      </div>
+
+      <div class="div-email">
+        <mat-form-field appearance="outline">
+          <mat-label>Entrer votre email</mat-label>
+          <input matInput placeholder="pat@example.com" formControlName="email" 
+                 style="color:#454546;" required>
+          <mat-error *ngIf="myForm.controls.email.invalid">{{getErrorMessage()}}</mat-error>
+          <!--mat-icon matSuffix style="margin-right: 0.35em;">email</mat-icon-->
+        </mat-form-field>
+      </div>
+
+
+      <div class="div-username" >
+        <mat-form-field appearance="outline"  >
+          <mat-label>Pseudonyme</mat-label>
+          <input matInput placeholder="Entrer votre pseudonyme" formControlName="username" type="text"  name="userName"  style="color:#454546;"
+                 [(ngModel)]="username">
+          <!--mat-icon matSuffix style="margin-right: 0.35em;">account_circle</mat-icon-->
+        </mat-form-field>
+      </div>
+
+      <div class="div-button">
+        <button class="button-createAccount" [disabled]="!myForm.valid" type="submit" >creer un compte</button>
+      </div>
+
+
+    </form>
+  </div>
+</div>
+

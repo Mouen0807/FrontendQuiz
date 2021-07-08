@@ -1,0 +1,43 @@
+
+<div class="container-body">
+
+  <div class="container-login">
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+      <div class="div-image">
+        <img src="assets/iconQuiz.svg" alt="" style="width: 140px;height: 140px;">
+      </div>
+      <div class="div-name">
+        Connectez-Vous!!!
+      </div>
+      <div class="div-username">
+         <mat-form-field appearance="outline"  >
+            <mat-label>Pseudonyme</mat-label>
+            <input matInput placeholder="Entrer votre pseudonyme"  type="text"  name="userName"  style="color:#454546;"
+                   formControlName="username">
+            <mat-error *ngIf="myForm.controls.username.hasError('required')">Veuillez entrer votre pseudo</mat-error>
+            <!--mat-icon matSuffix style="margin-right: 0.35em;">account_circle</mat-icon-->
+          </mat-form-field>
+      </div>
+
+      <div class="div-password">
+        <!--input class="input-text" type="password" placeholder="Password"
+               name="password" [(ngModel)]="password"-->
+
+        <mat-form-field appearance="outline">
+          <mat-label>Mot de passe</mat-label>
+          <input matInput placeholder="Entrer votre mot de passe" [type]="hide ? 'password' : 'text'" name="password" formControlName="password" style="color:#454546;">
+          <mat-error *ngIf="myForm.controls.password.hasError('required')">Veuillez entrer votre mot de passe</mat-error> 
+          
+          <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </mat-form-field>
+      </div>
+      <div class="div-button">
+        <button class="button-valider" type="submit" [disabled]="!myForm.valid">Valider</button>
+      </div>
+      <div class="div-Account">
+        <a href="">{{newAccount}}</a>
+      </div>
+
+    </form>
+  </div>
+</div>

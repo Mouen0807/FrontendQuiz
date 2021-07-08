@@ -1,0 +1,26 @@
+<div class="container-body">
+
+  <div class="container-login">
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+      <div class="div-name">
+        Code de Verification
+      </div>
+      <div class="div-spec">
+        Entrer le code de vérification envoyé par email
+      </div>
+      <div class="div-confirmation">
+        <mat-form-field appearance="outline"  >
+          <mat-label>Code</mat-label>
+          <input matInput placeholder="Entrer le code"  type="number" min="0" name="code"  style="color:#454546;"
+              formControlName="code">
+              <mat-error *ngIf="myForm.controls.code.hasError('required')">Veuillez entrer le code de vérification</mat-error>
+          <!--mat-icon matSuffix style="margin-right: 0.35em;">account_circle</mat-icon-->
+        </mat-form-field>
+      </div>
+
+      <div class="div-button" style="margin-top: 15px;">
+        <button class="button-confirm" type="submit" [disabled]="!myForm.valid">confirmer</button>
+      </div>
+    </form>
+  </div>
+</div>
